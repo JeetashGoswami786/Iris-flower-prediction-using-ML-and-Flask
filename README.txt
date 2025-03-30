@@ -1,114 +1,83 @@
-# Iris Flower Classification Web App
+Iris Flower Classification Web Application
 
-This is a **Machine Learning Web Application** that predicts the species of an Iris flower based on user input measurements. The model is built using **Logistic Regression**, and the web interface is developed using **Flask**.
+Overview:
+This project is a machine learning-based web application that predicts the species of an Iris flower based on user-inputted measurements. It uses Logistic Regression trained on the Iris dataset and is deployed as a web application using Flask.
 
----
+Features:
+- Users can input sepal length, sepal width, petal length, and petal width.
+- The model predicts the species: Setosa, Versicolor, or Virginica.
+- A corresponding image of the predicted flower is displayed.
+- Built using Flask, Scikit-learn, Joblib, Bootstrap, and HTML/CSS.
 
-## 📌 Features
-- Predicts the Iris flower species (**Setosa, Versicolor, or Virginica**) based on sepal and petal measurements.
-- User-friendly **web interface** built with Flask.
-- Scikit-learn **Logistic Regression model** for classification.
-- Displays an image of the predicted flower species.
-
----
-
-## 🛠️ Technologies Used
-- **Python**
-- **Flask** (for web development)
-- **Scikit-learn** (for machine learning model)
-- **HTML, CSS, Bootstrap** (for frontend design)
-- **Joblib** (for model serialization)
-
----
-
-## 📂 Project Structure
+Requirements:
+Ensure you have Python installed. Install the necessary dependencies using:
 ```
-├── static/
-│   ├── css/
-│   │   ├── style.css
-│   ├── images/
-│       ├── setosa.jpg
-│       ├── versicolor.jpg
-│       ├── virginica.jpg
-├── templates/
-│   ├── index.html
-│   ├── result.html
-├── iris_model.joblib  # Saved ML model
-├── iris_scaler.joblib # Scaler for input normalization
-├── train.py           # Script to train and save the model
-├── app.py             # Flask web application
-├── README.md          # Documentation
-├── requirements.txt   # Dependencies
-```
-
----
-
-## 🚀 Installation & Setup
-
-### 1️⃣ Install Required Dependencies
-First, install **Python** (if not already installed). Then, install the required libraries:
-```sh
 pip install -r requirements.txt
 ```
+Required Libraries:
+- Flask
+- Scikit-learn
+- Numpy
+- Joblib
 
-### 2️⃣ Train the Model (Optional)
-If you want to retrain the model, run:
-```sh
+Project Structure:
+```
+/iris_flask_app
+│── /static
+│   ├── /css
+│   │   ├── styles.css
+│   ├── /images
+│   │   ├── setosa.jpg
+│   │   ├── versicolor.jpg
+│   │   ├── virginica.jpg
+│── /templates
+│   ├── index.html
+│   ├── result.html
+│── iris_model.joblib
+│── iris_scaler.joblib
+│── app.py
+│── train.py
+│── README.txt
+│── requirements.txt
+```
+
+How to Train the Model:
+To train the model and save it for later use, run:
+```
 python train.py
 ```
+This script:
+1. Loads the Iris dataset.
+2. Scales the features using StandardScaler.
+3. Trains a Logistic Regression model.
+4. Saves the trained model (iris_model.joblib) and scaler (iris_scaler.joblib).
 
-### 3️⃣ Run the Flask Web App
-Start the web application using:
-```sh
+Running the Web Application:
+1. Start Flask Server:
+```
 python app.py
 ```
-The app will be accessible at:  
-👉 **http://127.0.0.1:5000/**
+2. Open your browser and visit:
+```
+http://127.0.0.1:5000/
+```
+
+Using the Application:
+1. Enter four numeric values (sepal length, sepal width, petal length, petal width).
+2. Click Predict.
+3. The species name and corresponding image will be displayed.
+4. Click Make Another Prediction to return to the home page.
+
+Troubleshooting:
+- CSS not working? Ensure styles.css is inside the /static/css/ folder and linked correctly in HTML.
+- Images not displaying? Make sure images are placed inside /static/images/ and correctly referenced in result.html.
+- Invalid input error? Ensure only numeric values are entered in the form.
+
+Future Enhancements:
+- Add more advanced ML models like Random Forest or SVM.
+- Deploy on Heroku/AWS for online access.
+- Improve UI with Bootstrap and JavaScript enhancements.
 
 ---
+Created by [Your Name]
 
-## 🎨 How It Works
-1. Open the **web app** in your browser.
-2. Enter the **sepal length, sepal width, petal length, and petal width**.
-3. Click the **Predict** button.
-4. The app will display:
-   - The **predicted species** name.
-   - An **image** of the predicted flower.
-
----
-
-## 🖼️ Screenshots
-### 🔹 Home Page
-![Home Page](static/images/homepage.png)
-
-### 🔹 Prediction Result
-![Result Page](static/images/resultpage.png)
-
----
-
-## 🛠️ Troubleshooting
-- If the **CSS is not loading**, ensure the `static/` folder is correctly linked in your HTML:
-  ```html
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  ```
-- If **images do not appear**, check the file paths in `result.html`:
-  ```html
-  <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Flower Image">
-  ```
-
----
-
-## 📌 Future Improvements
-✅ Deploy to **Heroku** or **GitHub Pages**
-✅ Improve UI with **Bootstrap and JavaScript**
-✅ Add **more ML models** for comparison
-
----
-
-## 📜 License
-This project is **open-source** and available under the **MIT License**.
-
----
-
-## 💡 Author
-Developed by **Jeetash Goswami** 🚀
